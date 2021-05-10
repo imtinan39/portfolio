@@ -1,0 +1,29 @@
+{% extends 'imtinan/base.html' %}
+{% block content %}
+  <!-------projects --->
+<div class="container">
+    <div class="alert alert-primary mt-5"- role="alert">
+      <h2 style="text-align: center"> {{tag}} </h2>
+    </div>
+    <div class="card-group">
+      {% for project in projects %}
+        <div class="card mr-2" style="border-top-style: solid;width: 22rem; border-top-color: cyan;border-top-width: 5px">
+          <img src="{{project.image.url}}" class="card-img-top" alt="..." style="height: 150px;width:auto">
+          <div class="card-body">
+            <h5 class="card-title">{{project.title}}</h5>
+            <p class="card-text">{{project.description | truncatechars:100}}</p>
+            <a href={{project.url}} class="btn btn-primary">GitHub</a>
+          </div>
+          <div class="card-footer">
+            
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+          <div class="w-100"></div>
+        {% endif %}
+      {% endfor  %}
+      
+    </div>
+  </div>
+  <!-------------------------->
+{% endblock%}

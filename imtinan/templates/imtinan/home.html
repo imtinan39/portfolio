@@ -1,0 +1,72 @@
+{% extends 'imtinan/base.html' %}
+{% block content %}
+  {% include 'imtinan/carosel.html' with blog_about=blog_about photos=photos %}
+  <!-- web technologies & Blogs -->
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col-sm-4">
+        <div class="alert alert-dark" style="width:auto;text-align: center" role="alert">
+          <p> Programming Languages</p>
+        </div>
+        <ul class="a">
+          {% for skill in skills %}
+            {% if skill.title == "programming" %}
+              
+              <li><a href="#" class="badge badge-info">{{skill.skill}}</a> </li>
+              
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="alert alert-dark" style="width:auto;text-align: center" role="alert">
+          <p> Web Technologies</p>
+        </div>
+        <ul class="a">
+          {% for skill in skills %}
+            {% if skill.title == "web" %}
+              
+              <li><a href="#" class="badge badge-primary">{{skill.skill}}</a> </li>
+              
+            {% endif %}
+          {% endfor %}
+          
+        </ul>
+        <div class="alert alert-dark" style="width:auto;text-align: center" role="alert">
+          <p> ML & Data Science Technologies</p>
+        </div>
+        <ul class="a">
+          {% for skill in skills %}
+            {% if skill.title == "data science" %}
+              
+              <li><a href="#" class="badge badge-success">{{skill.skill}}</a> </li>
+              
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+      <!-------- web technologies end------------>
+      <!-------------recent blog--------->
+      <div class="col-sm-4">
+        <!-----------Blank----------->
+      </div>
+      <div class="col-sm-4">
+        <div class="alert alert-dark" style="width:auto;text-align: center;" role="alert">
+          <p> Recent Blogs</p>
+        </div>
+        {% for blog in blog %}
+          <div class="card mb-2" style="border-top-style: solid;width: 22rem; border-top-color: cyan;border-top-width: 5px">
+            <img src="{{ blog.image.url }}" class="card-img-top" alt="..." style="height: 150px;width:auto">
+            <div class="card-body">
+              <h5 class="card-title">{{blog.title}}</h5>
+              <p class="card-text">{{ blog.description | truncatechars:100}}</p>
+              <a href="{% url 'blog_read' blog.id  %}" class="btn btn-primary">Let's Explore</a>
+            </div>
+          </div>
+        {% endfor %}
+        
+      </div>
+    </div>
+    <!--  recent Blogs end-->
+  </div>
+</div>
+{% include 'imtinan/contact.html' with contact=contact %}
+{% endblock %}

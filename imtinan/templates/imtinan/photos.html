@@ -1,0 +1,27 @@
+{% extends 'imtinan/base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="card-group">
+      {% for photo in photos %}
+        <div class="card mr-2" style="border-top-style: solid;width: 22rem; border-top-color: cyan;border-top-width: 5px">
+          <img src="{{photo.image.url}}" class="card-img-top" alt="..." style="height: 350px;width:auto">
+          <div class="card-footer">
+            <h5 class="card-title">{{photo.caption}}</h5>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:2 %}
+          <div class="w-100"></div>
+        {% endif %}
+      {% endfor  %}
+      
+    </div>
+  </div>
+
+
+
+ {% endblock %}
